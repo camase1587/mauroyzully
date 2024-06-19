@@ -51,12 +51,16 @@ export class TarjetaComponent implements OnInit {
       this.nombre = params.get('name');
     });
 
-    this.tarjetaService.getTarjetaData().subscribe(response => {
-      this.data = response;
-      console.log('8888888888888888888',this.data);
+    this.activeRoute.paramMap.subscribe(params => {
+      this.nombre = params.get('name');
+      if (this.nombre) {
+        this.tarjetaService.getTarjetaData(this.nombre).subscribe(response => {
+          this.data = response;
+          console.log(this.data);
 
+        });
+      }
     });
-
 
     // this.route.paramMap.subscribe(params => {
     //   console.log(params);

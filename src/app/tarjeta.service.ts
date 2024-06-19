@@ -11,7 +11,7 @@ export class TarjetaService {
 
   constructor(private http: HttpClient) { }
 
-  getTarjetaData(): Observable<any> {
-    return this.http.get<any>(this.apiUrl);
+  getTarjetaData(idTarjeta: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}${idTarjeta}`);
   }
 }
