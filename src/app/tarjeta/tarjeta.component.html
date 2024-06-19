@@ -1,0 +1,339 @@
+
+
+
+
+<div  id="home">
+  <section class="hero is-fullheight ">
+
+
+
+    <nav class="navbar is-transparent is-hidden-desktop">
+      <!-- Begin Burger Menu -->
+      <div class="navbar-brand is-fixed-top">
+        <div class="navbar-burger burger" (click)="toggleNavbar()" [class.is-active]="isNavbarActive">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <!-- End Burger Menu -->
+      <div id="mobile-nav" class="navbar-menu" [class.is-active]="isNavbarActive">
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <a class="navbar-item" href="#fecha">Fecha y Hora</a>
+          </div>
+          <div class="navbar-item">
+            <a class="navbar-item" href="#codigo">Codigo de vestimenta</a>
+          </div>
+          <div class="navbar-item">
+            <a class="navbar-item" href="#locacion">Ubicación</a>
+          </div>
+          <div class="navbar-item">
+            <a class="navbar-item" href="#confirmar">Confirmar</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+     <!-- <video #backgroundVideo muted autoplay  class="background-video">
+      <source src="assets/video-intro.mp4" type="video/mp4">
+      Your browser does not support t he video tag.
+    </video> -->
+    <img #backgroundImage src="assets/imagen-final.jpg" alt="Background Image" class="background-image">
+
+
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="subtitle">Hola {{nombre}}¡Nos Casamos!</h1>
+        <h2 class="title">Zully & Mauro</h2>
+        <!-- <h4 class="subtitle tempatwaktu">
+          Sábado, 13 de Julio de 2024
+          <br>
+          Finca Alta Flor, Circacia Quindio
+          <br>
+          Barcelona Baja
+        </h4> -->
+      </div>
+      <!-- Start Countdown -->
+      <div>
+        <ul id="hitungmundur">
+          <li><span class="days">{{ days }}</span>
+            <p class="days_text">{{ days === 1 ? 'Día' : 'Días' }}</p>
+          </li>
+          <li class="separator">:</li>
+          <li><span class="hours">{{ hours }}</span>
+            <p class="hours_text">{{ hours === 1 ? 'Hora' : 'Horas' }}</p>
+          </li>
+          <li class="separator"> : </li>
+          <li><span class="minutes">{{ minutes }}</span>
+            <p class="minutes_text">{{ minutes === 1 ? 'Minuto' : 'Minutos' }}</p>
+          </li>
+          <li class="separator">:</li>
+          <li><span class="seconds">{{ seconds }}</span>
+            <p class="seconds_text">{{ seconds === 1 ? 'Segundo' : 'Segundos' }}</p>
+          </li>
+        </ul>
+        <div class="spasi">
+        </div>
+      </div>
+      <!-- End Countdown -->
+    </div>
+
+    <div class="hero-foot">
+      <div class="hero-foot--wrapper">
+        <div class="columns">
+          <div class="column is-12 hero-menu-desktop has-text-centered">
+            <ul>
+              <li class="is-active">
+                <a href="#home">Inicio</a>
+              </li>
+              <li>
+                <a href="#fecha">Fecha y Hora</a>
+              </li>
+              <li>
+                <a href="#codigo">Codigo de Vestimenta</a>
+              </li>
+              <li>
+                <a href="#locacion">Ubicación</a>
+              </li>
+              <li>
+                <a href="#confirmar">Confirmar</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="main-content">
+
+  <!-- Begin regular-section-->
+  <section class="section-light no-padding-top regular-section has-text-centered has-vertically-aligned-content" id="regular-section">
+
+    <div data-aos="fade-up" data-aos-easing="linear">
+      <img src="../assets/image/bismillah.png" class="bismillah has-text-centered" alt="Bismillahirrahmaanirrahiim">
+    </div>
+
+    <p class="bodytext" data-aos="fade-up" data-aos-easing="linear">
+      texto
+      <br />
+texto      <br />
+texto    </p>
+
+    <span class="space40px"></span>
+    <span class="space40px"></span>
+
+    <div data-aos="fade-up" data-aos-easing="linear">
+      <div class="nama-lengkap" >
+        Zully
+      </div>
+      <div class="ampersand">&</div>
+      <div class="nama-lengkap">
+Mauro      </div>
+
+    </div>
+    <span class="space40px"></span>
+    <div data-aos="fade-up" data-aos-easing="linear">
+      <img src="../assets/image/divider-leaves.png" class="divider has-text-centered" alt="~~~">
+    </div>
+    <span class="space40px"></span>
+    <span class="space40px"></span>
+  </section>
+
+
+  <section class="section-dark" id="fecha">
+    <div class="container">
+
+      <div class="column is-12 regular-section" data-aos="fade-up" data-aos-easing="linear">
+        <h1 class="title has-text-centered section-title">Fecha</h1>
+      </div>
+      <div class="columns is-multiline" data-aos="fade-up" data-aos-easing="linear">
+        <div class="column is-4 has-vertically-aligned-content">
+
+
+          <div class="is-larger has-text-centered">
+            <div class="waktu tanggal-hari has-text-centered">Sabado</div>
+            <div class="waktu tanggal-angka has-text-centered">13</div>
+            <div class="waktu tanggal-bulan has-text-centered">Julio 2024</div>
+          </div>
+
+        </div>
+        <div class="column is-4 has-vertically-aligned-content">
+
+          <p class="waktu is-larger has-text-centered">
+            Boda
+            <br>
+            <strong>3:30PM</strong>
+          </p>
+
+        </div>
+
+        <div class="column is-4 has-vertically-aligned-content">
+
+          <h1 class="waktu is-larger has-text-centered">
+            Recepcion
+            <br>
+            <strong>6:00PM</strong>
+          </h1>
+
+
+        </div>
+
+      </div>
+    </div>
+    <div class="space40px"></div>
+    <div class="main-content has-text-centered" data-aos="fade-up" data-aos-easing="linear">
+      <a href="https://calendar.google.com/event?action=TEMPLATE&amp;tmeid=NGgzdW00NG84dXFwMzcwNXYxbGliNGxzaWggZGFlbmdkb2FuZ0Bt&amp;tmsrc=daengdoang%40gmail.com"
+        target="_blank" class="button has-tooltip btn-cta" data-tooltip="Add to Calendar" target="_blank"
+        data-aos="zoom-in">
+        <i class="far fa-calendar-plus"></i>
+        &nbsp;&nbsp;Google Calendar
+      </a>
+    </div>
+  </section>
+
+
+  <section class="section-darker" id="codigo">
+    <div class="container">
+
+      <div class="column is-12 regular-section" data-aos="fade-up" data-aos-easing="linear">
+        <h1 class="title has-text-centered section-title">cODIGO</h1>
+      </div>
+
+
+      <div class="columns is-multiline" data-aos="fade-up" data-aos-easing="linear">
+        <div class="column is-6 has-vertically-aligned-content">
+
+
+          <div class="is-larger has-text-centered">
+            <p class="waktu is-larger has-text-centered">
+              Mujeres
+              <a data-pin-do="embedBoard"
+               data-pin-board-width="400"
+               data-pin-scale-height="240"
+               data-pin-scale-width="80"
+               href="https://www.pinterest.com/salcedomira/mujeres/">
+            </a>
+            </p>
+
+          </div>
+
+        </div>
+        <div class="column is-6 has-vertically-aligned-content">
+
+          <p class="waktu is-larger has-text-centered">
+            Hombres
+            <a data-pin-do="embedBoard"
+             data-pin-board-width="400"
+             data-pin-scale-height="240"
+             data-pin-scale-width="80"
+             href="https://www.pinterest.com/salcedomira/hombres/">
+          </a>
+          </p>
+
+        </div>
+
+
+
+      </div>
+    </div>
+
+  </section>
+
+
+
+
+
+  <section class="section-dark" id="locacion">
+    <div class="container">
+      <div class="column is-12 regular-section" data-aos="fade-up" data-aos-easing="linear">
+        <h1 class="title has-text-centered section-title">Ubicacion</h1>
+        <p class="tempat is-larger has-text-centered">
+          <strong>Finca Alta Flor</strong>
+          <br>
+          Vereda Barcelona Baja
+          <br>
+          Ciracia, Quindio
+          <br>
+        </p>
+      </div>
+      <div class="section-map" data-aos="fade-up" data-aos-easing="linear">
+        <iframe
+
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5308.566222629585!2d-75.68473580644992!3d4.606340396154878!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e388aeb53108125%3A0x348753a833b20264!2sBarcelona%20Baja%2C%20Circasia%2C%20Quind%C3%ADo%2C%20Colombia!5e0!3m2!1ses-419!2sus!4v1718497245927!5m2!1ses-419!2sus"
+          width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+      </div>
+      <div class="space40px"></div>
+
+
+      <div class="has-text-centered" data-aos="fade-up" data-aos-easing="linear">
+        <a href="https://maps.google.com/maps?ll=-6.246855,106.971346&z=16&t=m&hl=en&gl=ID&mapclient=embed&daddr=RM.%20Pondok%20Kenanga%20Jl.%20Kenanga%20Raya%20No.9%20RT.001%2FRW.006A%2C%20Jakasampurna%20Bekasi%20Barat%2C%20Bekasi%20City%2C%20West%20Java%2017145@-6.2468549,106.9713456"
+            class="button btn-cta google-maps-icon" target="_blank" data-aos="zoom-in" aria-label="Google Maps">
+            <i class="fas fa-map-marked-alt"></i>
+            &nbsp;&nbsp;Google Maps
+        </a>
+    </div>
+
+    <div class="has-text-centered" data-aos="fade-up" data-aos-easing="linear">
+        <a href="https://waze.com/ul?q=Finca%20Alta%20Flor,%20Circacia%20Quindio"
+            class="button btn-cta waze-icon" target="_blank" data-aos="zoom-in" aria-label="Waze">
+            <i class="fab fa-waze"></i>
+            &nbsp;&nbsp;Waze
+        </a>
+    </div>
+
+
+    </div>
+  </section>
+
+
+
+
+  <section class="section-darker contact" id="confirmar">
+    <div class="container">
+      <div class="columns is-multiline">
+        <div class="column is-12 prolog">
+          <h1 class="title has-text-centered section-title">Confirmar Asistencia</h1>
+        </div>
+        <div class="column is-12 prolog has-text-centered">
+          <p class="tempat is-larger has-text-centered">
+            ¡Te esperamos en nuestra boda!
+            <br><br>
+            Estamos emocionados de compartir con ustedes que nos uniremos en matrimonio.
+            <br>Será un día lleno de amor y alegría, y nos encantaría que formes parte de él.
+            <br>Para que podamos hacer los preparativos necesarios, te pedimos que confirmes tu asistencia antes del 1 de julio.
+            <br>Entendemos que pueden surgir imprevistos y si no puedes asistir, agradecemos mucho que nos avises lo antes posible.
+            <br>Tu presencia es muy importante para nosotros y nos encantaría celebrar este momento especial contigo.
+            <br>Esperamos con ansias verte y compartir este día tan especial juntos.
+          </p>
+          <button class="button button btn-cta" (click)="openConfirmModal()">
+            <i class="fab fa-whatsapp"></i>
+            &nbsp;&nbsp;¡Nos Vemos<br>en la Boda!
+          </button>
+          <a
+            class="button button btn-cta" target="_blank"
+            href="https://wa.me/1234567890?text=Lo%20Siento,%20No%20Podré%20Asistir">
+            <i class="fab fa-whatsapp"></i>
+            &nbsp;&nbsp;Lo Siento<br>No Podré Asistir
+          </a>
+          <div class="space40px"></div>
+          <div class="space40px"></div>
+          <div>
+            <img src="../../assets/image/divider-leaves.png" class="divider has-text-centered" alt="~~~">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+</div>
+
+
