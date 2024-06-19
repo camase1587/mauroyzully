@@ -2,6 +2,8 @@ import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { interval } from 'rxjs';
 import { TarjetaService } from '../tarjeta.service';
+import { Invitado, Tarjeta, TarjetaResponse } from '../interfaces/tarjeta';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 //import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
 
 @Component({
@@ -23,17 +25,22 @@ export class TarjetaComponent implements OnInit {
 
   nombre: string | null = '';
 
-  data: any;
+  data: Tarjeta[]=[];
+
+  ok: boolean = true;
+  confirmForm: FormGroup;
 
 
-  constructor(private activeRoute: ActivatedRoute, private tarjetaService: TarjetaService) {
-    console.log('constructor');
+  constructor(private activeRoute: ActivatedRoute, private tarjetaService: TarjetaService, private fb: FormBuilder) {
+    this.confirmForm = this.fb.group({
+      invitados: this.fb.array([])
+    });
   }
 
   //@ViewChild(ConfirmModalComponent) confirmModal: ConfirmModalComponent;
 
   openConfirmModal() {
-   // this.confirmModal.openModal();
+    // this.confirmModal.openModal();
   }
 
   handleConfirm() {
@@ -54,9 +61,8 @@ export class TarjetaComponent implements OnInit {
     this.activeRoute.paramMap.subscribe(params => {
       this.nombre = params.get('name');
       if (this.nombre) {
-        this.tarjetaService.getTarjetaData(this.nombre).subscribe(response => {
-          this.data = response;
-          console.log(this.data);
+        this.tarjetaService.getTarjetaData(this.nombre).subscribe((response: TarjetaResponse) => {
+          this.ok = response.ok;
 
         });
       }
@@ -70,6 +76,28 @@ export class TarjetaComponent implements OnInit {
     this.initializeCountdown();
 
 
+  }
+
+
+
+  setInvitadosForm(invitados: Invitado[]): void {
+    const invitadosFGs = invitados.map(invitado => this.fb.group({
+      nombre: [invitado.nombre, Validators.required]
+    }));
+    const invitadosFormArray = this.fb.array(invitadosFGs);
+    this.confirmForm.setControl('invitados', invitadosFormArray);
+  }
+
+  onSubmit() {
+    if (this.confirmForm.valid) {
+      console.log('Confirmación:', this.confirmForm.value);
+      // Lógica para enviar la confirmación al servidor
+    }
+  }
+
+
+  get invitados(): FormArray {
+    return this.confirmForm.get('invitados') as FormArray;
   }
 
   traerTarjeta() {

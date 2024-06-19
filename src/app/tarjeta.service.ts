@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Tarjeta, TarjetaResponse } from './interfaces/tarjeta';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class TarjetaService {
 
   constructor(private http: HttpClient) { }
 
-  getTarjetaData(idTarjeta: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}${idTarjeta}`);
+  getTarjetaData(idTarjeta: string): Observable<TarjetaResponse> {
+    return this.http.get<TarjetaResponse>(`${this.apiUrl}${idTarjeta}`);
   }
 }
