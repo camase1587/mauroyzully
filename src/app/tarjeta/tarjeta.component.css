@@ -587,7 +587,28 @@ body.preloader-site {
   margin: 1rem;
 
 } */
+.invitado-row {
+  margin-bottom: 10px; /* Espaciado entre filas */
+}
 
+.invitado-control {
+  display: flex;
+  align-items: center;
+}
+
+.invitado-control .input {
+  flex: 1; /* Permite que el input tome todo el espacio disponible */
+  margin-right: 10px; /* Espaciado entre el input y el ícono */
+}
+
+.invitado-control i {
+  cursor: pointer;
+  /* color: red; Color del ícono */
+}
+
+.invitado-control i:hover {
+  color: darkred; /* Color del ícono al pasar el ratón por encima */
+}
 
 .btn-cta:hover {
   color: white;
@@ -605,6 +626,17 @@ body.preloader-site {
 
 .btn-cta {
   background-color: #A3B1A2;
+  width: 210px;
+  height: 65px;
+  color: white;
+  font-size: 1.2rem;
+  /* border: 2px solid #996E6D; */
+  /* border-radius: 10px; */
+  align-items: center;
+  margin: 1rem;
+}
+.btn-cta-2 {
+  background-color: darkred;
   width: 210px;
   height: 65px;
   color: white;

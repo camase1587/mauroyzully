@@ -8,7 +8,7 @@ export interface Tarjeta {
   descripcion?: string;
   codigo?: string;
   cupo?: number;
-  confirmacion?: string | null;
+  confirmacion?: number;
   invitados?: Invitado[]; // Añadir esta propiedad
 }
 

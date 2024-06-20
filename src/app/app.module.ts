@@ -5,11 +5,13 @@ import { AppComponent } from './app.component';
 import { TarjetaComponent } from './tarjeta/tarjeta.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PaginaNoDisponibleComponent } from './pagina-no-disponible/pagina-no-disponible.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TarjetaComponent
+    TarjetaComponent,
+    PaginaNoDisponibleComponent
   ],
   imports: [
     BrowserModule,

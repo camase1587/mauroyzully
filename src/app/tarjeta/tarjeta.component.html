@@ -1,6 +1,4 @@
-
-
-<div  id="home">
+<div id="home">
   <section class="hero is-fullheight ">
 
 
@@ -32,7 +30,7 @@
         </div>
       </div>
     </nav>
-     <!-- <video #backgroundVideo muted autoplay  class="background-video">
+    <!-- <video #backgroundVideo muted autoplay  class="background-video">
       <source src="assets/video-intro.mp4" type="video/mp4">
       Your browser does not support t he video tag.
     </video> -->
@@ -40,7 +38,7 @@
 
     <div class="hero-body">
       <div class="container has-text-centered">
-        <h1 class="subtitle">{{nombre}}</h1>
+        <h1 class="subtitle">{{tarjeta.descripcion}}</h1>
         <br>
         <h2 class="title">Zully & Mauro</h2>
         <h1 class="subtitle">¡Nos Casamos!</h1>
@@ -185,13 +183,15 @@ Mauro      </div>
     </div>
     <div class="space40px"></div>
     <div class="main-content has-text-centered" data-aos="fade-up" data-aos-easing="linear">
-      <a href="https://calendar.google.com/calendar/r/eventedit?text=Boda+de+Zully+Y+Mauro&dates=20240713T203000Z/20240714T050000Z&details=Unete+a+nosotros+en+nuestro+gran+dia!&location=Finca+Alta+Flor,+Vereda+Barcelona+Baja,+Circacia,+Quindio&sf=true&output=xml" target="_blank" class="button has-tooltip btn-cta" data-tooltip="Add to Calendar" data-aos="zoom-in">
+      <a href="https://calendar.google.com/calendar/r/eventedit?text=Boda+de+Zully+Y+Mauro&dates=20240713T203000Z/20240714T050000Z&details=Unete+a+nosotros+en+nuestro+gran+dia!&location=Finca+Alta+Flor,+Vereda+Barcelona+Baja,+Circacia,+Quindio&sf=true&output=xml"
+        target="_blank" class="button has-tooltip btn-cta" data-tooltip="Add to Calendar" data-aos="zoom-in">
         <i class="far fa-calendar-plus"></i>
         &nbsp;&nbsp;Google Calendar
       </a>
     </div>
     <div class="main-content has-text-centered" data-aos="fade-up" data-aos-easing="linear">
-      <a href="../../assets/boda.ics" download="Boda_de_Zully_Y_Mauro.ics" class="button has-tooltip btn-cta" data-tooltip="Add to iPhone Calendar" data-aos="zoom-in">
+      <a href="../../assets/boda.ics" download="Boda_de_Zully_Y_Mauro.ics" class="button has-tooltip btn-cta"
+        data-tooltip="Add to iPhone Calendar" data-aos="zoom-in">
         <i class="far fa-calendar-plus"></i>
         &nbsp;&nbsp;iPhone Calendar
       </a>
@@ -215,12 +215,9 @@ Mauro      </div>
           <div class="is-larger has-text-centered">
             <p class="waktu is-larger has-text-centered">
               Mujeres
-              <a data-pin-do="embedBoard"
-               data-pin-board-width="400"
-               data-pin-scale-height="200"
-               data-pin-scale-width="50"
-               href="https://www.pinterest.com/salcedomira/mujeres/">
-            </a>
+              <a data-pin-do="embedBoard" data-pin-board-width="400" data-pin-scale-height="200"
+                data-pin-scale-width="50" href="https://www.pinterest.com/salcedomira/mujeres/">
+              </a>
             </p>
 
           </div>
@@ -230,12 +227,9 @@ Mauro      </div>
 
           <p class="waktu is-larger has-text-centered">
             Hombres
-            <a data-pin-do="embedBoard"
-             data-pin-board-width="400"
-             data-pin-scale-height="200"
-             data-pin-scale-width="50"
-             href="https://www.pinterest.com/salcedomira/hombres/">
-          </a>
+            <a data-pin-do="embedBoard" data-pin-board-width="400" data-pin-scale-height="200" data-pin-scale-width="50"
+              href="https://www.pinterest.com/salcedomira/hombres/">
+            </a>
           </p>
 
         </div>
@@ -266,13 +260,13 @@ Mauro      </div>
       </div>
       <!-- 4.600813384399398, -75.69252255672387 -->
       <div class="section-map" data-aos="fade-up" data-aos-easing="linear" style="width: 100%; height: 450px;">
-        <iframe
-          src="https://embed.waze.com/iframe?zoom=16&lat=4.600813384399398&lon=-75.69252255672387&pin=1"
+        <iframe src="https://embed.waze.com/iframe?zoom=16&lat=4.600813384399398&lon=-75.69252255672387&pin=1"
           style="width: 100%; height: 100%; border: 0;" allowfullscreen="" loading="lazy"></iframe>
       </div>
 
       <div class="has-text-centered" data-aos="fade-up" data-aos-easing="linear" style="margin-top: 20px;">
-        <a href="waze://?ll=4.600813384399398,-75.69252255672387&navigate=yes" class="button is-primary btn-cta" target="_blank">
+        <a href="waze://?ll=4.600813384399398,-75.69252255672387&navigate=yes" class="button is-primary btn-cta"
+          target="_blank">
           Abrir en Waze
         </a>
       </div>
@@ -301,69 +295,87 @@ Mauro      </div>
   </section>
 
 
+  <div *ngIf="tarjeta.confirmacion !== -1">
+
+    <section class="section-darker contact" id="confirmar">
+      <div class="container">
+        <div class="columns is-multiline">
+          <div class="column is-12 prolog">
+            <h1 class="title has-text-centered section-title">Confirmar Asistencia</h1>
+          </div>
+          <div class="column is-12 prolog has-text-centered">
+            <p class="tempat is-larger has-text-centered">
+              ¡Te esperamos en nuestra boda!
+              <br><br>
+              Estamos emocionados de compartir con ustedes que nos uniremos en matrimonio.
+              <br>Será un día lleno de amor y alegría, y nos encantaría que formes parte de él.
+              <br>Para que podamos hacer los preparativos necesarios, te pedimos que confirmes tu asistencia
+              <strong>antes del 1 de julio</strong>.
+              <br>Entendemos que pueden surgir imprevistos y, si no puedes asistir, agradecemos mucho que nos avises lo
+              antes posible.
+              <br>Tu presencia es muy importante para nosotros y nos encantaría celebrar este momento especial contigo.
+              <br>Esperamos con ansias verte y compartir este día tan especial juntos.
+              <br><br>
+              <strong>Nota:</strong> Adoramos a sus hijos, pero creemos que necesitan una noche libre. Hagan de esta
+              fecha una cita.
+            </p>
+            <a id="cancelarAsistencia" class="button btn-cta" (click)="cancelarAsistencia($event)">
+              &nbsp;&nbsp;Lo Siento, No Podré Asistir
+            </a>
 
 
-  <section class="section-darker contact" id="confirmar">
-    <div class="container">
-      <div class="columns is-multiline">
-        <div class="column is-12 prolog">
-          <h1 class="title has-text-centered section-title">Confirmar Asistencia</h1>
-        </div>
-        <div class="column is-12 prolog has-text-centered">
-          <p class="tempat is-larger has-text-centered">
-            ¡Te esperamos en nuestra boda!
-            <br><br>
-            Estamos emocionados de compartir con ustedes que nos uniremos en matrimonio.
-            <br>Será un día lleno de amor y alegría, y nos encantaría que formes parte de él.
-            <br>Para que podamos hacer los preparativos necesarios, te pedimos que confirmes tu asistencia <strong>antes del 1 de julio</strong>.
-            <br>Entendemos que pueden surgir imprevistos y, si no puedes asistir, agradecemos mucho que nos avises lo antes posible.
-            <br>Tu presencia es muy importante para nosotros y nos encantaría celebrar este momento especial contigo.
-            <br>Esperamos con ansias verte y compartir este día tan especial juntos.
-            <br><br>
-            <strong>Nota:</strong> Adoramos a sus hijos, pero creemos que necesitan una noche libre. Hagan de esta fecha una cita.
-        </p>
-        <a id="cancelarAsistencia"
-        class="button btn-cta" target="_blank">
 
-        &nbsp;&nbsp;Lo Siento, No Podré Asistir
-      </a>
-          <button id="confirmarAsistencia" class="button  btn-cta" (click)="openConfirmModal()">
+            <div class="container">
+              <!-- Botón para activar la opción de agregar invitados y confirmar -->
+              <button type="button" class="button is-primary" (click)="activarAgregarInvitados()">
+                Nos vemos en la boda
+              </button>
+
+              <div *ngIf="mostrarFormulario">
+                <div class="field">
+                  <label class="label">Nombre del Invitado</label>
+                  <div class="control">
+                    <input class="input" formControlName="nombre" placeholder="Nombre del invitado" [formGroup]="confirmForm">
+                  </div>
+                  <div *ngIf="confirmForm.get('nombre')?.invalid && confirmForm.get('nombre')?.touched" class="help is-danger">
+                    El nombre es requerido.
+                  </div>
+                </div>
+                <div class="control">
+                  <button type="button" class="button is-primary" (click)="onSubmit()">Agregar Invitado</button>
+                </div>
+              </div>
+
+              <div *ngIf="invitados.length > 0">
+                <h3 class="title">Lista de Invitados</h3>
+                <ul>
+                  <li *ngFor="let invitado of invitados; let i = index">
+                    {{ invitado.nombre }}
+                    <button type="button" (click)="removeInvitado(i)">Eliminar</button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+
+            <!-- <button id="confirmarAsistencia" class="button  btn-cta" (click)="openConfirmModal()">
 
             &nbsp;&nbsp;¡Nos Vemos en la Boda!
-          </button>
+          </button> -->
 
-          <!-- <div class="space40px"></div> -->
-          <!-- <div class="space40px"></div>
-          <div>
-            <img src="../../assets/image/divider-leaves.png" class="divider has-text-centered" alt="~~~">
-          </div> -->
+
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+
+    </section>
+  </div>
 
 
 
-  <section class="hero is-primary">
-    <div class="hero-body">
-      <p class="title">
-        Bienvenido {{ nombre }}
-      </p>
-      <div *ngIf="tarjeta">
-        <p>ID Tarjeta: {{ tarjeta.idTarjeta }}</p>
-        <p>Descripción: {{ tarjeta.descripcion }}</p>
-        <p>Código: {{ tarjeta.codigo }}</p>
-        <p>Cupo: {{ tarjeta.cupo }}</p>
-        <p>Confirmación: {{ tarjeta.confirmacion }}</p>
-      </div>
-      <div *ngIf="!tarjeta">
-        <p>No se encontró ninguna tarjeta.</p>
-      </div>
-    </div>
-  </section>
 
 
-  <section class="section">
+  <!-- <section class="section">
     <div class="container">
       <form [formGroup]="confirmForm" (ngSubmit)="onSubmit()">
         <div formArrayName="invitados" *ngFor="let invitado of invitados.controls; let i = index">
@@ -379,16 +391,33 @@ Mauro      </div>
           </div>
         </div>
         <div class="control" *ngIf="tarjeta?.cupo! > 1">
-          <button *ngIf="invitados.length < (tarjeta?.cupo || 0)" type="button" class="button is-primary" (click)="addInvitado()">Agregar Invitado</button>
+          <button *ngIf="invitados.length < (tarjeta?.cupo || 0)" type="button" class="button is-primary"
+            (click)="addInvitado()">Agregar Invitado</button>
         </div>
         <div class="control">
           <button class="button is-primary" type="submit">Confirmar Asistencia</button>
         </div>
       </form>
     </div>
-  </section>
+  </section> -->
 
-
+  <!-- <section class="hero is-primary">
+    <div class="hero-body">
+      <p class="title">
+        Bienvenido {{ nombre }}
+      </p>
+      <div *ngIf="tarjeta">
+        <p>ID Tarjeta: {{ tarjeta.idTarjeta }}</p>
+        <p>Descripción: {{ tarjeta.descripcion }}</p>
+        <p>Código: {{ tarjeta.codigo }}</p>
+        <p>Cupo: {{ tarjeta.cupo }}</p>
+        <p>Confirmación: {{ tarjeta.confirmacion }}</p>
+      </div>
+      <div *ngIf="!tarjeta">
+        <p>No se encontró ninguna tarjeta.</p>
+      </div>
+    </div>
+  </section> -->
 
 
 
@@ -396,5 +425,3 @@ Mauro      </div>
 
 
 </div>
-
-
