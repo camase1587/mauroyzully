@@ -25,7 +25,7 @@ export class TarjetaComponent implements OnInit {
 
   nombre: string | null = '';
 
-  data: Tarjeta[]=[];
+  tarjeta: Tarjeta={};
 
   ok: boolean = true;
   confirmForm: FormGroup;
@@ -64,6 +64,25 @@ export class TarjetaComponent implements OnInit {
         this.tarjetaService.getTarjetaData(this.nombre).subscribe((response: TarjetaResponse) => {
           this.ok = response.ok;
 
+
+
+          if (response.tarjeta) {
+            this.tarjeta = response.tarjeta;
+            if (this.tarjeta.cupo === 1) {
+              this.setSingleInvitado();
+            } else {
+              this.setInvitadosForm(this.tarjeta.invitados!);
+            }
+          } else {
+            this.tarjeta ={};
+          }
+
+
+
+
+          // this.tarjeta=response.tarjeta
+          // console.log(this.tarjeta, 'llega');
+
         });
       }
     });
@@ -79,6 +98,12 @@ export class TarjetaComponent implements OnInit {
   }
 
 
+  setSingleInvitado(): void {
+    this.invitados.push(this.fb.group({
+      nombre: [this.tarjeta?.descripcion, Validators.required]
+    }));
+  }
+
 
   setInvitadosForm(invitados: Invitado[]): void {
     const invitadosFGs = invitados.map(invitado => this.fb.group({
@@ -89,15 +114,28 @@ export class TarjetaComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.confirmForm.valid) {
-      console.log('Confirmación:', this.confirmForm.value);
-      // Lógica para enviar la confirmación al servidor
+    if (this.confirmForm.valid && this.tarjeta) {
+      this.tarjetaService.submitInvitados(this.tarjeta.idTarjeta!, this.confirmForm.value.invitados)
+        .subscribe(response => {
+          console.log('Confirmación enviada:', response);
+          // Manejar la respuesta del servidor aquí
+        });
     }
   }
 
 
   get invitados(): FormArray {
     return this.confirmForm.get('invitados') as FormArray;
+  }
+
+  addInvitado(): void {
+    this.invitados.push(this.fb.group({
+      nombre: ['', Validators.required]
+    }));
+  }
+
+  removeInvitado(index: number): void {
+    this.invitados.removeAt(index);
   }
 
   traerTarjeta() {

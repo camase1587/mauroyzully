@@ -36,7 +36,7 @@
       <source src="assets/video-intro.mp4" type="video/mp4">
       Your browser does not support t he video tag.
     </video> -->
-    <img #backgroundImage src="assets/imagen-final.jpg" alt="Background Image" class="background-image">
+    <img #backgroundImage src="../../assets/fotos/back.jpg" alt="Background Image" class="background-image">
 
 
     <div class="hero-body">
@@ -327,7 +327,49 @@ Mauro      </div>
 
 
 
+  <section class="hero is-primary">
+    <div class="hero-body">
+      <p class="title">
+        Bienvenido {{ nombre }}
+      </p>
+      <div *ngIf="tarjeta">
+        <p>ID Tarjeta: {{ tarjeta.idTarjeta }}</p>
+        <p>Descripción: {{ tarjeta.descripcion }}</p>
+        <p>Código: {{ tarjeta.codigo }}</p>
+        <p>Cupo: {{ tarjeta.cupo }}</p>
+        <p>Confirmación: {{ tarjeta.confirmacion }}</p>
+      </div>
+      <div *ngIf="!tarjeta">
+        <p>No se encontró ninguna tarjeta.</p>
+      </div>
+    </div>
+  </section>
 
+
+  <section class="section">
+    <div class="container">
+      <form [formGroup]="confirmForm" (ngSubmit)="onSubmit()">
+        <div formArrayName="invitados" *ngFor="let invitado of invitados.controls; let i = index">
+          <div [formGroupName]="i" class="field">
+            <label class="label">Nombre del Invitado {{ i + 1 }}</label>
+            <div class="control">
+              <input class="input" formControlName="nombre" placeholder="Nombre del invitado">
+            </div>
+            <div *ngIf="invitado.get('nombre')?.invalid && invitado.get('nombre')?.touched" class="help is-danger">
+              El nombre es requerido.
+            </div>
+            <button type="button" class="button is-danger" (click)="removeInvitado(i)">Eliminar</button>
+          </div>
+        </div>
+        <div class="control" *ngIf="tarjeta?.cupo! > 1">
+          <button *ngIf="invitados.length < (tarjeta?.cupo || 0)" type="button" class="button is-primary" (click)="addInvitado()">Agregar Invitado</button>
+        </div>
+        <div class="control">
+          <button class="button is-primary" type="submit">Confirmar Asistencia</button>
+        </div>
+      </form>
+    </div>
+  </section>
 
 
 
