@@ -240,6 +240,9 @@ html {
   }
 }
 
+
+
+
 .main-content .section-dark.resume .title {
   padding: 20px;
 }
@@ -556,7 +559,7 @@ body.preloader-site {
 }
 
 
-.btn-whatsapp:hover {
+/* .btn-whatsapp:hover {
   color: white;
   background-color: #59a543;
   font-size: 1.2rem;
@@ -583,7 +586,7 @@ body.preloader-site {
   align-items: center;
   margin: 1rem;
 
-}
+} */
 
 
 .btn-cta:hover {
@@ -591,12 +594,14 @@ body.preloader-site {
   background-color: #bf7877;
   font-size: 1.2rem;
   border-radius: 10px;
-  border: 2px solid #bf7877;
+  /* border: 2px solid #bf7877; */
   width: 210px;
   height: 65px;
   align-items: center;
   margin: 1rem;
 }
+
+
 
 .btn-cta {
   background-color: #A3B1A2;
@@ -605,12 +610,19 @@ body.preloader-site {
   color: white;
   font-size: 1.2rem;
   /* border: 2px solid #996E6D; */
-  border-radius: 10px;
+  /* border-radius: 10px; */
   align-items: center;
   margin: 1rem;
 }
 
-.cashbac-logo-inline {
+@media (max-width: 599px) {
+  .btn-cta {
+    width: 100%;
+
+  }
+}
+
+/* .cashbac-logo-inline {
   width: 160px;
   vertical-align: middle;
 }
@@ -630,9 +642,9 @@ body.preloader-site {
   border-radius: 10px 0 0 10px;
   font-size: 24px;
   padding: 15px;
-}
+} */
 
-.btn-voucher-code {
+/* .btn-voucher-code {
   height: 55px;
   min-width: 100px;
   border: 2px solid #26ade4;
@@ -643,7 +655,7 @@ body.preloader-site {
   margin: 0;
   vertical-align: middle;
   color: white;
-}
+} */
 
 .fa-copy {
   margin-right: 5px;
@@ -678,7 +690,7 @@ body.preloader-site {
   border-radius: 10px;
 }
 
-
+/*
 .foto1 {
   background-image: linear-gradient(rgba(95, 2, 2, 0.5), rgba(48, 47, 47, 0.9)), url("../../assets/image/sherly-daeng-kang-emil.jpg");
   background-size: cover;
@@ -727,7 +739,7 @@ body.preloader-site {
   background-position: center;
   background-repeat: no-repeat;
   min-height: 24rem;
-}
+} */
 
 
 

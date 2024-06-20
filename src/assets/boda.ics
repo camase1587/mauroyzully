@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Your Company//Your Product//EN
+BEGIN:VEVENT
+UID:boda-zully-mauro@example.com
+DTSTAMP:20240620T120000Z
+DTSTART:20240713T203000Z
+DTEND:20240714T050000Z
+SUMMARY:Boda de Zully Y Mauro
+DESCRIPTION:Unete a nosotros en nuestro gran dia!
+LOCATION:Finca Alta Flor, Vereda Barcelona Baja, Circacia, Quindio
+END:VEVENT
+END:VCALENDAR
