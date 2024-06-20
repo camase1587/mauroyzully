@@ -8,22 +8,36 @@ ul#hitungmundur {
 }
 ul#hitungmundur li {
 	display: inline-block;
+  margin: 0 10px; /* Espaciado entre los elementos */
 }
 ul#hitungmundur li span {
-	font-size: 30px;
-	font-weight: 500;
-	line-height: 30px;
+	font-size: 72px;
+	font-weight: bold;
+	--line-height: 30px;
 }
 ul#hitungmundur li.separator {
-	font-size: 30px;
-	line-height: 25px;
+	font-size: 72px;
+	--line-height: 25px;
 	vertical-align: top;
 }
 ul#hitungmundur li p {
 	color: #fff;
-	font-size: 16px;
+	font-size: 48px;
 }
 
+@media (max-width: 599px) {
+  ul#hitungmundur li span {
+    font-size: 28px;
 
+  }
+  ul#hitungmundur li.separator {
+    font-size: 28px;
+    --line-height: 25px;
+    vertical-align: top;
+  }
+  ul#hitungmundur li p {
+    font-size: 15px;
+  }
+}
 
 

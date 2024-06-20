@@ -12,8 +12,6 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./tarjeta.component.css', '../../assets/jquery.countdown.css']
 })
 export class TarjetaComponent implements OnInit {
-  // @ViewChild('backgroundVideo', { read: ElementRef }) backgroundVideo: ElementRef;
-  // @ViewChild('backgroundImage', { read: ElementRef }) backgroundImage: ElementRef;
 
   isNavbarActive: boolean = false;
   idTarjeta: string | null = null;
@@ -37,7 +35,7 @@ export class TarjetaComponent implements OnInit {
     });
   }
 
-  //@ViewChild(ConfirmModalComponent) confirmModal: ConfirmModalComponent;
+
 
   openConfirmModal() {
     // this.confirmModal.openModal();
@@ -143,13 +141,7 @@ export class TarjetaComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    // const video: HTMLVideoElement = this.backgroundVideo.nativeElement;
-    // const image: HTMLImageElement = this.backgroundImage.nativeElement;
 
-    // video.addEventListener('ended', () => {
-    //   video.style.display = 'none';
-    //   image.style.display = 'block';
-    // });
   }
 
   initializeCountdown() {

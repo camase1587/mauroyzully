@@ -1,4 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Lato|Raleway|Rouge+Script");
+@font-face {
+  font-family: 'Willow';
+  src: url('../../assets/fonts/Willow.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 .has-vertically-aligned-content {
   display: flex;
   flex-direction: column;
@@ -25,45 +33,56 @@ html {
   text-transform: ;
   letter-spacing: 1px;
   font-size: 1rem;
-  box-shadow:  ;
+  box-shadow: ;
 }
 
-.navbar-item.is-active{
+.navbar-item.is-active {
   border-bottom: 2px solid #996E6D;
 }
 
-.a.navbar-item{
+.a.navbar-item {
   font-color: #996E6D;
 }
 
 .home {
-  height: 100vh; /* Establece la altura al 100% del viewport height */
+  height: 100vh;
+  /* Establece la altura al 100% del viewport height */
+}
+
+
+.countdown {
+  font-size: 48px;
+  /* Aumenta el tamaño del texto */
+  font-weight: bold;
+  /* Opcional: hacer el texto en negrita */
+  color: #4E3627;
+  /* Marrón Oscuro */
+  text-align: center;
+  margin-top: 20px;
 }
 
 
 .hero {
-  /* background-image: url(https://picsum.photos/id/25/1920/1080);
-  background: linear-gradient(rgba(153, 110, 109, 0.65), rgba(153, 110, 109, 0.65)), rgba(0, 0, 0, 0.55) url("https://picsum.photos/id/381/1920/1080") no-repeat;
+  background-image: url('../../assets/fotos/back.jpg');
+  /* background: linear-gradient(rgba(153, 110, 109, 0.65), rgba(153, 110, 109, 0.65)), rgba(0, 0, 0, 0.55) url('../../assets/fotos/back.jpg') no-repeat; */
   background-attachment: fixed;
   background-size: cover;
   color: white;
   box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  font-family: 'Raleway', sans-serif; */
+  font-family: 'Raleway', sans-serif;
   position: relative;
   overflow: hidden;
+  background-position: center;
 }
 
-.background-video {
-  position: absolute;
-  top: 0;
-  left: 0;
+@media (max-width: 599px) {
+  .hero {
+    background-attachment: scroll; /* Cambia el comportamiento del attachment en móviles */
+    background-size: cover; /* Asegúrate de que la imagen cubra el fondo */
 
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-
+  }
 }
+
 
 
 .background-image {
@@ -72,23 +91,29 @@ html {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ajusta la imagen para cubrir todo el contenedor */
-  --display: none; /* Inicialmente oculta la imagen */
+  object-fit: cover;
+  /* Ajusta la imagen para cubrir todo el contenedor */
+  --display: none;
+  /* Inicialmente oculta la imagen */
 }
 
 
-    .hero-body {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      height: 100%;
-    }
+.hero-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
 
-    .container.has-text-centered {
-      max-width: 600px; /* Ajusta el ancho máximo del contenedor según sea necesario */
-    }
+
+
+
+.container.has-text-centered {
+  max-width: 600px;
+  /* Ajusta el ancho máximo del contenedor según sea necesario */
+}
 
 .hero .title {
   font-family: 'Willow', sans-serif;
@@ -100,14 +125,34 @@ html {
 }
 
 .hero .subtitle {
-  padding: 35px;
+  padding: 25px;
   color: whitesmoke;
-  font-size: 1.3rem;
+  font-size: 2.3rem;
+}
+
+@media (max-width: 599px) {
+
+  .hero .title {
+    font-family: 'Willow', sans-serif;
+    font-weight: 700;
+    transform: rotate(-2deg);
+    font-size: 3rem;
+    /* padding-bottom: 370px; */
+    padding-top: 100%;
+    color: whitesmoke;
+  }
+
+
+  .hero .subtitle {
+    padding: 0px;
+    color: whitesmoke;
+    font-size: 2rem;
+  }
 }
 
 .hero .tempatwaktu {
   padding-top: 35px;
-  font-size: 1.3rem;
+  font-size: .3rem;
 
 }
 
@@ -157,11 +202,11 @@ html {
 }
 
 
-.space40px{
+.space40px {
   height: 40px;
 }
 
-.space24px{
+.space24px {
   height: 24px;
 }
 
@@ -174,12 +219,12 @@ html {
 }
 
 .main-content .section-dark {
-  background-color: #F4E2E2;
+  background-color: #F0E5D8;
   padding: 80px 40px;
 }
 
 .main-content .section-darker {
-  background-color: #EDD2D1;
+  background-color: #EBCAC2;
   padding: 80px 40px;
 }
 
@@ -246,7 +291,7 @@ html {
 }
 
 .section-map {
-  padding: 0 0 0 0 ;
+  padding: 0 0 0 0;
 }
 
 .main-content .section-light {
@@ -350,12 +395,12 @@ html {
 }
 
 .ampersand {
-font-size: 5rem;
-font-family: 'Rouge Script', sans-serif;
-color: #996E6D;
-line-height: 5rem;
-display: inline-block;
-vertical-align: middle;
+  font-size: 5rem;
+  font-family: 'Rouge Script', sans-serif;
+  color: #996E6D;
+  line-height: 5rem;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .bodytext {
@@ -386,6 +431,17 @@ vertical-align: middle;
   vertical-align: middle;
 }
 
+.has-vertically-aligned-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
 .footer {
   bottom: 0;
   width: 100vw;
@@ -410,7 +466,7 @@ vertical-align: middle;
   padding-top: 0px;
 }
 
-.footer img{
+.footer img {
   margin: 10px 0px 10px 10px;
   display: inline-block;
   max-height: 24px;
@@ -506,7 +562,7 @@ body.preloader-site {
   font-size: 1.2rem;
   border-radius: 10px;
   border: 2px solid #59a543;
-  width:  210px;
+  width: 210px;
   height: 65px;
   align-items: center;
   margin: 1rem;
@@ -515,7 +571,7 @@ body.preloader-site {
 
 .btn-whatsapp {
   background-color: #6cc751;
-  width:  210px;
+  width: 210px;
   height: 65px;
   color: white;
   font-size: 1.2rem;
@@ -531,24 +587,24 @@ body.preloader-site {
 
 
 .btn-cta:hover {
-  color:white;
+  color: white;
   background-color: #bf7877;
   font-size: 1.2rem;
   border-radius: 10px;
   border: 2px solid #bf7877;
-  width:  210px;
+  width: 210px;
   height: 65px;
   align-items: center;
   margin: 1rem;
 }
 
 .btn-cta {
-  background-color: #996E6D;
-  width:  210px;
+  background-color: #A3B1A2;
+  width: 210px;
   height: 65px;
   color: white;
   font-size: 1.2rem;
-  border: 2px solid #996E6D;
+  /* border: 2px solid #996E6D; */
   border-radius: 10px;
   align-items: center;
   margin: 1rem;
@@ -571,7 +627,7 @@ body.preloader-site {
   height: 55px;
   max-width: 180px;
   border: 2px solid #26ade4;
-  border-radius: 10px 0 0 10px  ;
+  border-radius: 10px 0 0 10px;
   font-size: 24px;
   padding: 15px;
 }
@@ -592,15 +648,31 @@ body.preloader-site {
 .fa-copy {
   margin-right: 5px;
 }
-.white
-{color:ghostwhite}
+
+.white {
+  color: ghostwhite
+}
 
 
-.dusty-pink {color: #D8A9A8}
-.dusty-pink-lighter {color: #EDD2D1}
-.dusty-pink-lightest {color: #F4E2E2}
-.dusty-pink-darker {color: #BC8887}
-.dusty-pink-darkest {color: #996E6D}
+.dusty-pink {
+  color: #D8A9A8
+}
+
+.dusty-pink-lighter {
+  color: #EDD2D1
+}
+
+.dusty-pink-lightest {
+  color: #F4E2E2
+}
+
+.dusty-pink-darker {
+  color: #BC8887
+}
+
+.dusty-pink-darkest {
+  color: #996E6D
+}
 
 .tile {
   border-radius: 10px;
@@ -611,7 +683,7 @@ body.preloader-site {
   background-image: linear-gradient(rgba(95, 2, 2, 0.5), rgba(48, 47, 47, 0.9)), url("../../assets/image/sherly-daeng-kang-emil.jpg");
   background-size: cover;
   background-position: center;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
   min-height: 24rem;
 }
 
@@ -620,7 +692,7 @@ body.preloader-site {
   background-image: linear-gradient(rgba(95, 2, 2, 0.5), rgba(48, 47, 47, 0.9)), url("../../assets/image/sherly-daeng-cashbac.jpg");
   background-size: cover;
   background-position: center;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
   min-height: 24rem;
 }
 
@@ -628,7 +700,7 @@ body.preloader-site {
   background-image: linear-gradient(rgba(95, 2, 2, 0.5), rgba(48, 47, 47, 0.9)), url("../../assets/image/sherly-daeng-selfie.jpg");
   background-size: cover;
   background-position: top;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
   min-height: 24rem;
 }
 
@@ -636,7 +708,7 @@ body.preloader-site {
   background-image: linear-gradient(rgba(95, 2, 2, 0.5), rgba(48, 47, 47, 0.9)), url("../../assets/image/sherly-daeng-lamaran.jpg");
   background-size: cover;
   background-position: top;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
   min-height: 24rem;
 }
 
@@ -644,7 +716,7 @@ body.preloader-site {
   background-image: linear-gradient(rgba(95, 2, 2, 0.5), rgba(48, 47, 47, 0.9)), url("../../assets/image/sherly-daeng-red-car.jpg");
   background-size: cover;
   background-position: center;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
   min-height: 24rem;
 }
 
@@ -653,7 +725,7 @@ body.preloader-site {
   background-image: linear-gradient(rgba(95, 2, 2, 0.5), rgba(48, 47, 47, 0.9)), url("../../assets/image/sherly-daeng-engagement-ami.jpg");
   background-size: cover;
   background-position: center;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
   min-height: 24rem;
 }
 
@@ -683,8 +755,10 @@ body.preloader-site {
   background-position: bottom -30px center;
   background-repeat: no-repeat;
   background-size: initial;
-  background-color: white; /* Agrega este estilo para hacer el fondo blanco */
-  padding: 80px 40px; /* Ajusta el padding según sea necesario */
+  background-color: white;
+  /* Agrega este estilo para hacer el fondo blanco */
+  padding: 80px 40px;
+  /* Ajusta el padding según sea necesario */
 }
 
 .instagram {
@@ -697,11 +771,14 @@ body.preloader-site {
   text-align: center;
   padding: 10px;
 }
+
 strong {
-  color: black; /* Establece el color del texto en negro */
+  color: black;
+  /* Establece el color del texto en negro */
 }
 
-.google-maps-icon, .waze-icon {
+.google-maps-icon,
+.waze-icon {
   background: none;
   border: none;
   cursor: pointer;
@@ -709,14 +786,18 @@ strong {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: white;  /* Set text color to white */
+  color: white;
+  /* Set text color to white */
 }
 
-.google-maps-icon i, .waze-icon i {
+.google-maps-icon i,
+.waze-icon i {
   font-size: 24px;
-  color: white;  /* Set icon color to white */
+  color: white;
+  /* Set icon color to white */
 }
 
-.google-maps-icon:hover i, .waze-icon:hover i {
+.google-maps-icon:hover i,
+.waze-icon:hover i {
   opacity: 0.8;
 }
