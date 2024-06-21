@@ -8,7 +8,7 @@ import { Invitado, Tarjeta, TarjetaResponse } from './interfaces/tarjeta';
 })
 export class TarjetaService {
 
-  private apiUrl = 'http://localhost:3000/api/tarjetaboda';
+  private apiUrl = 'http://92.204.129.156:3000/api/tarjetaboda';
 
   constructor(private http: HttpClient) { }
 
