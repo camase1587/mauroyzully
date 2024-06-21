@@ -1,6 +1,6 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { interval } from 'rxjs';
+import { iif, interval } from 'rxjs';
 import { TarjetaService } from '../tarjeta.service';
 import { Invitado, Tarjeta, TarjetaResponse } from '../interfaces/tarjeta';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -23,11 +23,11 @@ export class TarjetaComponent implements OnInit {
 
   mostrarFormulario: boolean = false;
 
-  invitados: any[] = []; // Lista de invitados
+  invitados: Invitado[] = []; // Lista de invitados
 
   nombre: string | null = '';
 
-  tarjeta: Tarjeta = {};
+  tarjeta: Tarjeta = {invitados: []};
 
   ok: boolean = true;
   confirmForm: FormGroup;
@@ -39,7 +39,10 @@ export class TarjetaComponent implements OnInit {
   }
 
 
-
+  shouldShowForm(): boolean {
+   // return this.tarjeta?.cupo !== undefined && this.tarjeta.cupo > 1;
+   return this.invitados.length > 0;
+  }
   openConfirmModal() {
     // this.confirmModal.openModal();
   }
@@ -163,20 +166,38 @@ export class TarjetaComponent implements OnInit {
     this.tarjetaService.getTarjetaData(idTarjeta).subscribe(
       (response: TarjetaResponse) => {
         this.ok = response.ok;
-        console.log("Respuesta recibida:", response);
+      //  console.log("Respuesta recibida:", response);
 
         if(!this.ok)this.router.navigate(['tarjeta/nodisponible']);;
 
 
         if (response.tarjeta) {
+
+
           this.tarjeta = response.tarjeta;
 
+          this.invitados = response.tarjeta.invitados || [];  // Actualiza la lista de invitados
 
+
+          console.log("esta es lka que quedaaa", this.invitados);
+
+
+
+          this.tarjeta.invitados = response.tarjeta.invitados
+          console.log("Respuesta recibida:2222wwww", this.tarjeta.invitados);
 
 
           if(this.tarjeta.idTarjeta)
           localStorage.setItem('idTarjeta', this.tarjeta.idTarjeta);
 
+          if(this.tarjeta.invitados && this.tarjeta.invitados?.length>0){
+            this.mostrarFormulario=true;
+          }
+
+
+          // if (this.tarjeta.cupo !== undefined && this.tarjeta.cupo > 1) {
+          //   this.mostrarFormulario = true;
+          // }
 
 
 
@@ -184,11 +205,11 @@ export class TarjetaComponent implements OnInit {
 
           console.log(this.tarjeta.descripcion);
 
-          if (this.tarjeta.cupo === 1) {
-            this.setSingleInvitado();
-          } else {
-            this.populateInvitados(this.tarjeta.invitados!);
-          }
+          // if (this.tarjeta.cupo === 1) {
+          //   this.setSingleInvitado();
+          // } else {
+          //   this.populateInvitados(this.tarjeta.invitados!);
+          // }
         } else {
           console.log('no tenemos tarjeta');
 
@@ -202,11 +223,6 @@ export class TarjetaComponent implements OnInit {
   }
 
 
-  setSingleInvitado(): void {
-    this.invitados.push(this.fb.group({
-      nombre: [this.tarjeta?.descripcion, Validators.required]
-    }));
-  }
 
 
 
@@ -215,6 +231,8 @@ export class TarjetaComponent implements OnInit {
   }
 
   onSubmit(): void {
+    console.log("llega");
+
     if (this.confirmForm.valid) {
       this.addInvitado();
     }
@@ -223,10 +241,15 @@ export class TarjetaComponent implements OnInit {
   // get invitados(): FormArray {
   //   return this.confirmForm.get('invitados') as FormArray;
   // }
-  addInvitado(): void {
-    const nombre = this.confirmForm.get('nombre')?.value;
-    console.log(nombre, 'ypiiii');
 
+
+  addInvitado(): void {
+    if (this.tarjeta.cupo !== undefined && this.invitados.length >= this.tarjeta.cupo) {
+      console.error('El cupo está lleno, no se pueden agregar más invitados');
+      return;
+    }
+
+    const nombre = this.confirmForm.get('nombre')?.value;
     if (nombre.trim() === '') {
       console.error('Nombre del invitado no puede estar vacío');
       return;
@@ -236,7 +259,7 @@ export class TarjetaComponent implements OnInit {
     this.tarjetaService.addInvitado(invitadoData).subscribe(
       response => {
         console.log('Invitado agregado:', response);
-        this.invitados.push(invitadoData);
+        this.invitados.push(invitadoData); // Agrega el nuevo invitado a la lista
         this.confirmForm.reset();
       },
       error => {
@@ -244,6 +267,7 @@ export class TarjetaComponent implements OnInit {
       }
     );
   }
+
 
 
   createInvitado(nombre: string): FormGroup {
@@ -255,15 +279,27 @@ export class TarjetaComponent implements OnInit {
 
   removeInvitado(index: number): void {
     const invitado = this.invitados[index];
-    if (!invitado.id) {
+    if (!invitado.idInvitado) {
       this.invitados.splice(index, 1);
       return;
     }
 
-    this.tarjetaService.deleteInvitado(invitado.id).subscribe(
+
+    this.tarjetaService.deleteInvitado(invitado.idInvitado).subscribe(
       response => {
         console.log('Invitado eliminado:', response);
         this.invitados.splice(index, 1);
+        console.log(this.invitados.length);
+
+        if(this.invitados.length===0){
+
+          console.log("no llegoaaaa");
+
+          this.mostrarFormulario=false;
+        }
+
+        console.log('ssssssssssssssssssss ', this.mostrarFormulario);
+
       },
       error => {
         console.error('Error al eliminar invitado:', error);
@@ -271,9 +307,7 @@ export class TarjetaComponent implements OnInit {
     );
   }
   activarAgregarInvitados(): void {
-    if (this.invitados.length === 0) {
-      this.addInvitado();
-    }
+
     this.mostrarFormulario = true;
     Swal.fire({
 

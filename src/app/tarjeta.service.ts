@@ -42,7 +42,9 @@ export class TarjetaService {
   }
 
   deleteInvitado(invitado: any): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/eliminarInvitado/${invitado.id}`); // Asegúrate de que `invitado` tiene un campo `id`
+    console.log('-----a-s-asdsad ', invitado);
+
+    return this.http.delete(`${this.apiUrl}/eliminarInvitado/${invitado}`); // Asegúrate de que `invitado` tiene un campo `id`
   }
 
 }

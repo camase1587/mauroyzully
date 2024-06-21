@@ -322,40 +322,64 @@ Mauro      </div>
             <a id="cancelarAsistencia" class="button btn-cta" (click)="cancelarAsistencia($event)">
               &nbsp;&nbsp;Lo Siento, No Podré Asistir
             </a>
-
-
-
-            <div class="container">
-              <!-- Botón para activar la opción de agregar invitados y confirmar -->
+            <!-- <div *ngIf="tarjeta?.cupo === 1 || invitados.length ===0">
               <button type="button" class="button is-primary" (click)="activarAgregarInvitados()">
                 Nos vemos en la boda
               </button>
+            </div>
+ -->
 
-              <div *ngIf="mostrarFormulario">
+            <div *ngIf="mostrarFormulario==false">
+              <button type="button" class="button btn-cta" (click)="activarAgregarInvitados()">
+                Nos vemos en la boda
+              </button>
+            </div>
+
+
+            <div *ngIf="mostrarFormulario">
+              <form [formGroup]="confirmForm">
                 <div class="field">
-                  <label class="label">Nombre del Invitado</label>
+                  <!-- <label class="label">Nombre del Invitado</label> -->
                   <div class="control">
-                    <input class="input" formControlName="nombre" placeholder="Nombre del invitado" [formGroup]="confirmForm">
+                    <input class="input" formControlName="nombre" placeholder="Nombre del invitado">
                   </div>
                   <div *ngIf="confirmForm.get('nombre')?.invalid && confirmForm.get('nombre')?.touched" class="help is-danger">
                     El nombre es requerido.
                   </div>
                 </div>
-                <div class="control">
-                  <button type="button" class="button is-primary" (click)="onSubmit()">Agregar Invitado</button>
+                <div class="control" *ngIf="invitados.length < (tarjeta.cupo ?? 0)">
+                  <button type="button" class="button btn-cta" (click)="onSubmit()">Agregar Invitado</button>
                 </div>
-              </div>
-
-              <div *ngIf="invitados.length > 0">
-                <h3 class="title">Lista de Invitados</h3>
-                <ul>
-                  <li *ngFor="let invitado of invitados; let i = index">
-                    {{ invitado.nombre }}
-                    <button type="button" (click)="removeInvitado(i)">Eliminar</button>
-                  </li>
-                </ul>
-              </div>
+              </form>
             </div>
+
+
+            <div *ngIf="invitados.length > 0" class="invitados-container">
+              <table class="table is-fullwidth">
+                <thead>
+                  <tr>
+                    <th>Nombre de Invitados</th>
+                    <th class="is-narrow"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let invitado of invitados; let i = index">
+                    <td>{{ invitado?.nombre }}</td>
+                    <td class="has-text-right">
+                      <button type="button" class="button-remove"(click)="removeInvitado(i)">
+                        <i class="fas fa-trash-alt"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+
+
+
+
+
 
 
             <!-- <button id="confirmarAsistencia" class="button  btn-cta" (click)="openConfirmModal()">

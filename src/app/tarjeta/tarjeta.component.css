@@ -616,24 +616,24 @@ body.preloader-site {
   font-size: 1.2rem;
   border-radius: 10px;
   /* border: 2px solid #bf7877; */
-  width: 210px;
+  width:100%;
   height: 65px;
   align-items: center;
-  margin: 1rem;
+
 }
 
 
 
 .btn-cta {
   background-color: #A3B1A2;
-  width: 210px;
+  width: 100%;
   height: 65px;
   color: white;
   font-size: 1.2rem;
   /* border: 2px solid #996E6D; */
   /* border-radius: 10px; */
   align-items: center;
-  margin: 1rem;
+  margin: 0rem;
 }
 .btn-cta-2 {
   background-color: darkred;
@@ -844,4 +844,56 @@ strong {
 .google-maps-icon:hover i,
 .waze-icon:hover i {
   opacity: 0.8;
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.table th {
+  background-color: #A3B1A2;
+  color: white;
+  text-align: center;
+}
+
+.table tr:nth-child(even) {
+  background-color: #D8E3DC; /* Color de la paleta */
+}
+
+.table tr:nth-child(odd) {
+  background-color: #F0F0F0; /* Color de la paleta */
+}
+
+.table tr:hover {
+  background-color: #C7D3C2; /* Color de la paleta */
+}
+
+.table td {
+  color: #000000; /* Color negro para el texto */
+}
+
+.button-remove {
+  background-color: #996E6D;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.button-remove:hover {
+  background-color: #A3B1A2;
 }
