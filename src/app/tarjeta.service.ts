@@ -8,7 +8,7 @@ import { Invitado, Tarjeta, TarjetaResponse } from './interfaces/tarjeta';
 })
 export class TarjetaService {
 
-  private apiUrl = 'http://localhost:3000/tarjeta';
+  private apiUrl = 'http://localhost:3000/api/tarjetaboda';
 
   constructor(private http: HttpClient) { }
 
@@ -18,7 +18,7 @@ export class TarjetaService {
 
   submitInvitados(idTarjeta: string, invitados: Invitado[]): Observable<any> {
     const body = { idTarjeta, invitados };
-    console.log(body, 'body');
+    // console.log(body, 'body');
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post<any>(`${this.apiUrl}/confirmar`, body, { headers });
@@ -27,7 +27,7 @@ export class TarjetaService {
 
 
   confirmarAsistencia(idTarjeta: string, estado:number): Observable<any> {
-    console.log(idTarjeta, estado);
+    // console.log(idTarjeta, estado);
 
     return this.http.post(`${this.apiUrl}/confirmar-asistencia`, {
       idTarjeta: idTarjeta,
@@ -36,13 +36,13 @@ export class TarjetaService {
   }
 
   addInvitado(invitado: any): Observable<any> {
-    console.log(invitado, 'este es el que envia');
+    // console.log(invitado, 'este es el que envia');
 
     return this.http.post(`${this.apiUrl}/agregarInvitado`, invitado);
   }
 
   deleteInvitado(invitado: any): Observable<any> {
-    console.log('-----a-s-asdsad ', invitado);
+    // console.log('-----a-s-asdsad ', invitado);
 
     return this.http.delete(`${this.apiUrl}/eliminarInvitado/${invitado}`); // Asegúrate de que `invitado` tiene un campo `id`
   }

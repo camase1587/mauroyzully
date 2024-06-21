@@ -56,31 +56,31 @@ export class TarjetaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('entraaa');
+    // console.log('entraaa');
 
     // this.activeRoute.paramMap.subscribe(params => {
-    //  // console.log(params);
+    //  // // console.log(params);
 
     //   this.idTarjeta = params.get('idTarjeta');
     // });
 
     this.activeRoute.paramMap.subscribe(params => {
       this.idTarjeta = params.get('idTarjeta');
-      console.log("Parametro recibido:", this.idTarjeta);
+      // console.log("Parametro recibido:", this.idTarjeta);
       if (this.idTarjeta==null){
         this.idTarjeta=localStorage.getItem('idTarjeta');
 
-  console.log("revisara SI TIENE EL LOG ",this.idTarjeta);
+  // console.log("revisara SI TIENE EL LOG ",this.idTarjeta);
 
   if(this.idTarjeta==null){
     this.router.navigate(['tarjeta/nodisponible']);
   }else{
-    console.log("Cargaria");
+    // console.log("Cargaria");
 
   }
 
   //this.idTarjeta=localStorage.getItem('idTarjeta');
-  //console.log(this.idTarjeta, "656");
+  //// console.log(this.idTarjeta, "656");
 
 
 
@@ -89,7 +89,7 @@ export class TarjetaComponent implements OnInit {
 
 
 
-      console.log("-----", this.idTarjeta);
+      // console.log("-----", this.idTarjeta);
 
       // if (this.idTarjeta) {
       //   localStorage.setItem('idTarjeta', this.idTarjeta);
@@ -97,23 +97,23 @@ export class TarjetaComponent implements OnInit {
 
 
       //   if (params.keys.length > 0) {
-      //     console.log("mayor");
+      //     // console.log("mayor");
 
       //   this.router.navigate(['/']);
       //   }else{
-      //     console.log("esta sin parametros");
+      //     // console.log("esta sin parametros");
 
       //   }
 
       // }else{
       //   this.idTarjeta=localStorage.getItem('idTarjeta');
 
-      //   console.log('desdeeeeee ', this.idTarjeta);
+      //   // console.log('desdeeeeee ', this.idTarjeta);
 
 
       // }
 
-     // console.log('tarjeta:', this.tarjeta);
+     // // console.log('tarjeta:', this.tarjeta);
 
       if(this.idTarjeta){
         this.obtenerTarjetaData(this.idTarjeta);
@@ -123,14 +123,14 @@ export class TarjetaComponent implements OnInit {
       // if (this.idTarjeta) {
       //   this.tarjetaService.getTarjetaData(this.idTarjeta).subscribe((response: TarjetaResponse) => {
       //     this.ok = response.ok;
-      //     console.log("llegamos");
+      //     // console.log("llegamos");
 
 
 
 
       //     if (response.tarjeta) {
       //       this.tarjeta = response.tarjeta;
-      //       console.log(this.tarjeta, "s221215");
+      //       // console.log(this.tarjeta, "s221215");
 
       //       if (this.tarjeta.cupo === 1) {
       //         this.setSingleInvitado();
@@ -145,28 +145,28 @@ export class TarjetaComponent implements OnInit {
 
 
       //     // this.tarjeta=response.tarjeta
-      //     // console.log(this.tarjeta, 'llega');
+      //     // // console.log(this.tarjeta, 'llega');
 
       //   });
       // }
     });
 
     // this.route.paramMap.subscribe(params => {
-    //   console.log(params);
+    //   // console.log(params);
     //   this.idTarjeta = params.get('idTarjeta');
-    //   console.log(this.idTarjeta);
+    //   // console.log(this.idTarjeta);
     // });
     this.initializeCountdown();
 
 
   }
   obtenerTarjetaData(idTarjeta: string): void {
-    console.log("LLEGATO: " + idTarjeta);
+    // console.log("LLEGATO: " + idTarjeta);
 
     this.tarjetaService.getTarjetaData(idTarjeta).subscribe(
       (response: TarjetaResponse) => {
         this.ok = response.ok;
-      //  console.log("Respuesta recibida:", response);
+      //  // console.log("Respuesta recibida:", response);
 
         if(!this.ok)this.router.navigate(['tarjeta/nodisponible']);;
 
@@ -179,20 +179,22 @@ export class TarjetaComponent implements OnInit {
           this.invitados = response.tarjeta.invitados || [];  // Actualiza la lista de invitados
 
 
-          console.log("esta es lka que quedaaa", this.invitados);
+          // console.log("esta es lka que quedaaa", this.invitados);
 
 
 
           this.tarjeta.invitados = response.tarjeta.invitados
-          console.log("Respuesta recibida:2222wwww", this.tarjeta.invitados);
+          // console.log("Respuesta recibida:2222wwww", this.tarjeta.invitados);
 
 
           if(this.tarjeta.idTarjeta)
           localStorage.setItem('idTarjeta', this.tarjeta.idTarjeta);
 
-          if(this.tarjeta.invitados && this.tarjeta.invitados?.length>0){
-            this.mostrarFormulario=true;
-          }
+          // if(this.tarjeta.invitados && this.tarjeta.invitados?.length>0 && this.tarjeta.cupo>1){
+          //   this.mostrarFormulario=true;
+          // }
+
+          this.updateMostrarFormulario();
 
 
           // if (this.tarjeta.cupo !== undefined && this.tarjeta.cupo > 1) {
@@ -201,9 +203,9 @@ export class TarjetaComponent implements OnInit {
 
 
 
-          console.log("Tarjeta obtenida:", this.tarjeta);
+          // console.log("Tarjeta obtenida:", this.tarjeta);
 
-          console.log(this.tarjeta.descripcion);
+          // console.log(this.tarjeta.descripcion);
 
           // if (this.tarjeta.cupo === 1) {
           //   this.setSingleInvitado();
@@ -211,7 +213,7 @@ export class TarjetaComponent implements OnInit {
           //   this.populateInvitados(this.tarjeta.invitados!);
           // }
         } else {
-          console.log('no tenemos tarjeta');
+          // console.log('no tenemos tarjeta');
 
           this.tarjeta = {};
         }
@@ -223,15 +225,53 @@ export class TarjetaComponent implements OnInit {
   }
 
 
+  updateMostrarFormulario(): void {
+    // console.log("ajoooo");
+
+    if(this.tarjeta?.cupo == undefined)return;
+    // this.mostrarFormulario = (this.invitados.length > 0 && this.tarjeta.cupo>0) || (this.tarjeta?.cupo !== undefined && this.tarjeta.cupo > 1);
+
+    // console.log(this.tarjeta.cupo,'cupooooo');
+
+    if(this.tarjeta.invitados?.length==0){
+      this.mostrarFormulario = false;
+      return;
+    }
+
+    if(this.tarjeta.invitados!==undefined && this.tarjeta.invitados.length<this.tarjeta.cupo)this.mostrarFormulario = true;
+
+    if(this.tarjeta.cupo===1)this.mostrarFormulario = false;
 
 
+  }
+
+  addSelfAsInvitado(): void {
+    const invitadoData: Invitado = { nombre: this.tarjeta.descripcion!, idTarjeta: this.idTarjeta ?? '' };
+    this.tarjetaService.addInvitado(invitadoData).subscribe(
+      response => {
+        // console.log('Invitado agregado automáticamente:', response);
+        this.invitados.push(response.invitado);
+        this.router.navigate(['/']);
+     //   this.updateMostrarFormulario();
+
+
+      },
+      error => {
+        console.error('Error al agregar invitado automáticamente:', error);
+      }
+    );
+  }
+
+  // updateMostrarFormulario(): void {
+  //   this.mostrarFormulario = this.invitados.length > 0;
+  // }
 
   populateInvitados(invitados: any[]): void {
     this.invitados = invitados || [];
   }
 
   onSubmit(): void {
-    console.log("llega");
+    // console.log("llega");
 
     if (this.confirmForm.valid) {
       this.addInvitado();
@@ -258,7 +298,7 @@ export class TarjetaComponent implements OnInit {
     const invitadoData = { nombre, idTarjeta: this.idTarjeta };
     this.tarjetaService.addInvitado(invitadoData).subscribe(
       response => {
-        console.log('Invitado agregado:', response);
+        // console.log('Invitado agregado:', response);
         this.invitados.push(invitadoData); // Agrega el nuevo invitado a la lista
         this.confirmForm.reset();
       },
@@ -281,24 +321,25 @@ export class TarjetaComponent implements OnInit {
     const invitado = this.invitados[index];
     if (!invitado.idInvitado) {
       this.invitados.splice(index, 1);
+      this.updateMostrarFormulario();
       return;
     }
 
 
     this.tarjetaService.deleteInvitado(invitado.idInvitado).subscribe(
       response => {
-        console.log('Invitado eliminado:', response);
+        // console.log('Invitado eliminado:', response);
         this.invitados.splice(index, 1);
-        console.log(this.invitados.length);
+        // console.log(this.invitados.length);
 
         if(this.invitados.length===0){
 
-          console.log("no llegoaaaa");
+          // console.log("no llegoaaaa");
 
           this.mostrarFormulario=false;
         }
 
-        console.log('ssssssssssssssssssss ', this.mostrarFormulario);
+        // console.log('ssssssssssssssssssss ', this.mostrarFormulario);
 
       },
       error => {
@@ -335,11 +376,19 @@ export class TarjetaComponent implements OnInit {
         this.tarjetaService.confirmarAsistencia(this.tarjeta.idTarjeta!, -1).subscribe(
           (response: any) => {
             if (response.ok) {
+
+
+              this.tarjeta.confirmacion = -1;
+              this.invitados = [];
+
               Swal.fire(
                 'Cancelado',
                 'Tu asistencia ha sido cancelada exitosamente.',
                 'success'
-              );
+              ).then(() => {
+               // location.reload();
+            });
+
             } else {
               Swal.fire(
                 'Error',
@@ -359,6 +408,8 @@ export class TarjetaComponent implements OnInit {
         );
       }
     });
+
+
   }
 
   traerTarjeta() {
@@ -386,7 +437,7 @@ export class TarjetaComponent implements OnInit {
 
   confirmarAsistencia(): void {
     // Lógica para confirmar la asistencia
-    console.log('Asistencia confirmada');
+    // console.log('Asistencia confirmada');
   }
 
 
